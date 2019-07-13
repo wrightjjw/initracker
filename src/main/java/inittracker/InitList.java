@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public class InitList {
 
     private List<InitBlock> inits;
+    private int size;
+    public int getSize() { return size; }
 
     public InitList() {
         inits = new ArrayList<>();
