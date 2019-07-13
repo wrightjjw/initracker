@@ -16,6 +16,7 @@ public class InitList {
 
     public InitList() {
         inits = new ArrayList<>();
+        size = 0;
     }
 
     public InitBlock get(int index) {
@@ -30,5 +31,6 @@ public class InitList {
             }
         }
         inits.add(ib);
+        size++;
     }
 }
