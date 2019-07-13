@@ -37,6 +37,10 @@ public final class App {
     }
 
 
+    private void addInitEntry(String name, Integer init, Integer ac) {
+        inits.add(new InitBlock(name, init, ac));
+    }
+
     static Object[][] initListToObjectArray(InitList il) {
         int s = il.getSize();
         Object[][] o = new Object[s][];
