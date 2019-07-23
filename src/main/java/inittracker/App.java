@@ -5,8 +5,10 @@ import javax.swing.table.AbstractTableModel;
 import java.awt.event.*;
 
 /**
- * Hello world!
+ * Create the GUI for the InitTracker app
  */
+// TODO: Create remove buttons
+// TODO: Create display window
 public final class App implements ActionListener {
     public static void main(String[] args) {
         App app = new App();
@@ -69,8 +71,13 @@ public final class App implements ActionListener {
         mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Action handler
+     */
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+
+        // adding table entries
         if (command == "add entry") {
             String name = nameBox.getText();
             int init = Integer.parseInt( initBox.getText() );
@@ -79,6 +86,9 @@ public final class App implements ActionListener {
             table.updateUI();
             //TODO: Implement error handling
         }
+
+        // Print debug on unrecognized action
+        // TODO: make this an exception
         else {
             System.out.println("Action performed, but no command recognized.");
         }
@@ -93,6 +103,10 @@ public final class App implements ActionListener {
         }
         return o;
     }
+    /**
+     * Model for the Init table.
+     * @author Josh Wright
+     */
     class InitTableModel extends AbstractTableModel {
 
         private static final long serialVersionUID = 1L;
