@@ -1,6 +1,7 @@
 package inittracker;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import java.awt.event.*;
 
 /**
@@ -16,11 +17,10 @@ public final class App implements ActionListener {
     JFrame mainWindow;
     JFrame displayWindow;
     JTable table;
+    InitTableModel model;
     JTextField nameBox;
     JTextField initBox;
     JTextField acBox;
-    InitList inits;
-    Object[][] data;
 
     private App() {
         createMainWindow();
@@ -29,14 +29,12 @@ public final class App implements ActionListener {
     private void createMainWindow() {
         mainWindow = new JFrame("Initiative Tracker");
 
-        inits = new InitList();
-        String[] titles = {"Init", "Name", "AC"};
-
         JPanel top = new JPanel();
         JPanel mid = new JPanel();
         JPanel bot = new JPanel();
 
-        table = new JTable(initListToObjectArray(inits), titles);
+        model = new InitTableModel();
+        table = new JTable(model);
         mid.add(table);
 
         JLabel nameLabel = new JLabel("Name:");
@@ -74,12 +72,11 @@ public final class App implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command == "add entry") {
-            System.out.println("Adding init entry!");
             String name = nameBox.getText();
             int init = Integer.parseInt( initBox.getText() );
             int ac = Integer.parseInt ( acBox.getText() );
-            inits.add(new InitBlock(name, init, ac));
-            data = initListToObjectArray(inits);
+            model.data.add(new InitBlock(name, init, ac));
+            table.updateUI();
             //TODO: Implement error handling
         }
         else {
@@ -95,5 +92,33 @@ public final class App implements ActionListener {
             o[i] = array;
         }
         return o;
+    }
+    class InitTableModel extends AbstractTableModel {
+
+        private static final long serialVersionUID = 1L;
+
+        private String[] columnNames = {"Init", "Name", "AC"};
+        public InitList data = new InitList();
+
+        @Override
+        public int getColumnCount() {
+            return 3;
+        }
+
+        @Override
+        public int getRowCount() {
+            return data.getSize();
+        }
+
+        @Override
+        public Object getValueAt(int x, int y) {
+            InitBlock it = data.get(x);
+            switch (y) {
+                case 0: return it.init;
+                case 1: return it.name;
+                case 2: return it.ac;
+                default: throw new IllegalArgumentException("InitTableModel.getValueAt(): invalid y value");
+            }
+        }
     }
 }
