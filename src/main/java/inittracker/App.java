@@ -1,7 +1,10 @@
 package inittracker;
 
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+
+import java.awt.FlowLayout;
 import java.awt.event.*;
 
 /**
@@ -23,6 +26,7 @@ public final class App implements ActionListener {
     JTextField nameBox;
     JTextField initBox;
     JTextField acBox;
+    ArrayList<JButton> removeButtons;
 
     private App() {
         createMainWindow();
@@ -31,13 +35,27 @@ public final class App implements ActionListener {
     private void createMainWindow() {
         mainWindow = new JFrame("Initiative Tracker");
 
-        JPanel top = new JPanel();
+        JPanel top = new JPanel(new FlowLayout());
         JPanel mid = new JPanel();
         JPanel bot = new JPanel();
 
+        JPanel topA = new JPanel();
+        topA.setLayout(new BoxLayout(topA, BoxLayout.Y_AXIS));
+        JPanel topB = new JPanel();
+        topB.setLayout(new BoxLayout(topB, BoxLayout.Y_AXIS));
+        JPanel topC = new JPanel();
+        topC.setLayout(new BoxLayout(topC, BoxLayout.Y_AXIS));
+        JPanel topD = new JPanel();
+        topD.setLayout(new BoxLayout(topD, BoxLayout.Y_AXIS));
+
+        top.add(topA);
+        top.add(topB);
+        top.add(topC);
+        top.add(topD);
+
         model = new InitTableModel();
         table = new JTable(model);
-        mid.add(table);
+        topC.add(table);
 
         JLabel nameLabel = new JLabel("Name:");
         bot.add(nameLabel);
