@@ -26,7 +26,9 @@ public final class App implements ActionListener {
     JTextField nameBox;
     JTextField initBox;
     JTextField acBox;
-    ArrayList<JButton> removeButtons;
+    ArrayList<JButton> removeButtons = new ArrayList<JButton>();
+
+    JPanel top, mid, bot, topA, topB, topC, topD;
 
     private App() {
         createMainWindow();
@@ -35,17 +37,17 @@ public final class App implements ActionListener {
     private void createMainWindow() {
         mainWindow = new JFrame("Initiative Tracker");
 
-        JPanel top = new JPanel(new FlowLayout());
+        JPanel top = new JPanel();
         JPanel mid = new JPanel();
         JPanel bot = new JPanel();
 
-        JPanel topA = new JPanel();
+        topA = new JPanel();
         topA.setLayout(new BoxLayout(topA, BoxLayout.Y_AXIS));
-        JPanel topB = new JPanel();
+        topB = new JPanel();
         topB.setLayout(new BoxLayout(topB, BoxLayout.Y_AXIS));
-        JPanel topC = new JPanel();
+        topC = new JPanel();
         topC.setLayout(new BoxLayout(topC, BoxLayout.Y_AXIS));
-        JPanel topD = new JPanel();
+        topD = new JPanel();
         topD.setLayout(new BoxLayout(topD, BoxLayout.Y_AXIS));
 
         top.add(topA);
@@ -103,6 +105,22 @@ public final class App implements ActionListener {
             model.data.add(new InitBlock(name, init, ac));
             table.updateUI();
             //TODO: Implement error handling
+            //TODO: clear text boxes
+
+            JButton newButton = new JButton("X");
+            removeButtons.add(newButton);
+            updateRemoveButtons();
+            topD.add(newButton);
+        }
+
+        // removing entries
+        else if (command.contains("button")) {
+            JButton oldButton = removeButtons.get( Integer.parseInt( String.valueOf( command.charAt(7) ) ) );
+            removeButtons.remove(oldButton);
+            topD.remove(oldButton);
+            updateRemoveButtons();
+
+            //TODO: remove from table
         }
 
         // Print debug on unrecognized action
@@ -110,6 +128,16 @@ public final class App implements ActionListener {
         else {
             System.out.println("Action performed, but no command recognized.");
         }
+    }
+    /**
+     * Update the commands on the remove buttons so they remove the proper init entry.
+     * Should be run any time the remove button list is updated.
+     */
+    void updateRemoveButtons() {
+        int i = 0;
+        removeButtons.forEach((button) -> {
+            button.setActionCommand(String.format("button %d", i));
+        });
     }
 
     static Object[][] initListToObjectArray(InitList il) {
