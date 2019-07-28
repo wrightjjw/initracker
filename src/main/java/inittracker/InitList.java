@@ -39,10 +39,32 @@ public class InitList {
         for (int i = 0; i < inits.size(); i++) {
             if (ib.greaterThan(inits.get(i))) {
                 inits.add(i, ib);
-                break;
+                size++;
+                return;
             }
         }
         inits.add(ib);
         size++;
+    }
+
+    /**
+     * Remove an InitBlock at a specified index.
+     * @param index The index of the item to remove
+     * @return The InitBlock that was removed
+     */
+    public InitBlock remove(int index) {
+        size--;
+        return inits.remove(index);
+    }
+
+    /**
+     * Remove an InitBlock from the list.
+     * @param ib The InitBlock to remove.
+     * @return True if the InitBlock was in the list, false if not.
+     */
+    public boolean remove(InitBlock ib) {
+        size--;
+        boolean result = inits.remove(ib);
+        return result;
     }
 }
