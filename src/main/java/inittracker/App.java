@@ -115,12 +115,15 @@ public final class App implements ActionListener {
 
         // removing entries
         else if (command.contains("button")) {
-            JButton oldButton = removeButtons.get( Integer.parseInt( String.valueOf( command.charAt(7) ) ) );
+            int index = Integer.parseInt( String.valueOf( command.charAt(7) ) );
+            System.out.printf("Removing index %d\n", index);
+            JButton oldButton = removeButtons.get( index );
             removeButtons.remove(oldButton);
             topD.remove(oldButton);
             updateRemoveButtons();
 
-            //TODO: remove from table
+            model.data.remove(index);
+            table.updateUI();
         }
 
         // Print debug on unrecognized action
