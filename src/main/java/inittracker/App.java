@@ -106,6 +106,7 @@ public final class App implements ActionListener {
             table.updateUI();
             //TODO: Implement error handling
             //TODO: clear text boxes
+            //TODO: activate on enter key
 
             JButton newButton = new JButton("X");
             removeButtons.add(newButton);
