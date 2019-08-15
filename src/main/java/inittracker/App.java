@@ -10,7 +10,6 @@ import java.awt.event.*;
 /**
  * Create the GUI for the InitTracker app
  */
-// TODO: Create remove buttons
 // TODO: Create display window
 public final class App implements ActionListener {
     public static void main(String[] args) {
