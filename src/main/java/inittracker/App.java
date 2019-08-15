@@ -109,6 +109,7 @@ public final class App implements ActionListener {
 
             JButton newButton = new JButton("X");
             removeButtons.add(newButton);
+            newButton.addActionListener(this);
             updateRemoveButtons();
             topD.add(newButton);
         }
@@ -137,10 +138,9 @@ public final class App implements ActionListener {
      * Should be run any time the remove button list is updated.
      */
     void updateRemoveButtons() {
-        int i = 0;
-        removeButtons.forEach((button) -> {
-            button.setActionCommand(String.format("button %d", i));
-        });
+        for (int i = 0; i < removeButtons.size(); i++) {
+            removeButtons.get(i).setActionCommand(String.format("button %d", i));
+        }
     }
 
     static Object[][] initListToObjectArray(InitList il) {
