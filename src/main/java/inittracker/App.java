@@ -3,6 +3,7 @@ package inittracker;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import java.awt.Font;
 
 import java.awt.FlowLayout;
 import java.awt.event.*;
@@ -56,6 +57,8 @@ public final class App implements ActionListener {
 
         model = new InitTableModel();
         table = new JTable(model);
+        table.setFont(new Font("Ariel", Font.PLAIN, 15));
+        table.setRowHeight(25);
         topC.add(table);
 
         JLabel nameLabel = new JLabel("Name:");
@@ -107,7 +110,9 @@ public final class App implements ActionListener {
             //TODO: clear text boxes
             //TODO: activate on enter key
 
+            // adding remove button
             JButton newButton = new JButton("X");
+            newButton.setFont(new Font("Arial", Font.BOLD, 12));
             removeButtons.add(newButton);
             newButton.addActionListener(this);
             updateRemoveButtons();
