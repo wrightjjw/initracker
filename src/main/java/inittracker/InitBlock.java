@@ -35,14 +35,16 @@ public class InitBlock {
     /**
      * Greater than operator. Compares init values of two InitBlocks.
      * @param other InitBlock to compare to
-     * @return true if this has a larger init value than other, false if not
+     * @return 1 if this > other, -1 if this < other, 0 if this = other
      */
     // FIXME: This method may cause misbehavement when used with blocks of equal value
-    public Boolean greaterThan(InitBlock other) {
+    public int greaterThan(InitBlock other) {
         if (init > other.init) {
-            return true;
+            return 1;
+        } else if (init < other.init) {
+            return -1;
         } else {
-            return false;
+            return 0;
         }
     }
 }

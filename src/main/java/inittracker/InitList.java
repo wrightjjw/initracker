@@ -37,7 +37,7 @@ public class InitList {
      */
     public void add(InitBlock ib) {
         for (int i = 0; i < inits.size(); i++) {
-            if (ib.greaterThan(inits.get(i))) {
+            if (ib.greaterThan(inits.get(i)) == 1) {
                 inits.add(i, ib);
                 size++;
                 return;
