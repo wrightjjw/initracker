@@ -30,6 +30,11 @@ public class InitListTest {
         assertEquals("Remus is 1st", "Remus", il.get(0).name);
         assertEquals("Klaus is 2nd", "Klaus", il.get(1).name);
         assertEquals("Oswalt is 3rd", "Oswalt", il.get(2).name);
+
+        try {
+            il.add(ib1);
+            fail("Added equal init");
+        } catch (EqualInitsException ex) { }
     }
 
     @Test

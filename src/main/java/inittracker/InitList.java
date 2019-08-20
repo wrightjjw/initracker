@@ -33,10 +33,14 @@ public class InitList {
 
     /**
      * Add an InitBlock to the list.
+     * If it is equivalent to an init already in the list, it will throw an exception.
+     * Behavior when an init is equal should be determined by the application.
      * @param ib InitBlock to add
+     * @throws EqualInitsException
      */
     public void add(InitBlock ib) {
         for (int i = 0; i < inits.size(); i++) {
+            if (ib.greaterThan(inits.get(i)) == 0) throw new EqualInitsException();
             if (ib.greaterThan(inits.get(i)) == 1) {
                 inits.add(i, ib);
                 size++;
