@@ -37,7 +37,6 @@ public class InitBlock {
      * @param other InitBlock to compare to
      * @return 1 if this > other, -1 if this < other, 0 if this = other
      */
-    // FIXME: This method may cause misbehavement when used with blocks of equal value
     public int greaterThan(InitBlock other) {
         if (init > other.init) {
             return 1;

@@ -30,6 +30,9 @@ public class InitBlockTest {
     public void testGreaterThan() {
         InitBlock ib1 = new InitBlock("Klaus", 16, 15);
         InitBlock ib2 = new InitBlock("Oswalt", 15, 15);
+        InitBlock ib3 = new InitBlock("Kriv", 15, 16);
         assertTrue("Klaus > Oswalt", ib1.greaterThan(ib2) == 1);
+        assertTrue("Oswalt < Klaus", ib2.greaterThan(ib1) == -1);
+        assertTrue("Oswalt = Kriv", ib2.greaterThan(ib3) == 0);
     }
 }
