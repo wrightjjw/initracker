@@ -1,6 +1,6 @@
-/**
- * Container for InitBlocks. Automatically organizes them based on inits.
- * @author Josh Wright
+/** InitList.java
+ * Copyright (C) 2020 Josh Wright
+ * licensed under GPLv3
  */
 
 package inittracker;
@@ -8,6 +8,10 @@ package inittracker;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Container for InitBlocks. Automatically organizes them based on inits.
+ * @author Josh Wright
+ */
 public class InitList {
 
     private List<InitBlock> inits;

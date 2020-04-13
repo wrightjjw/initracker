@@ -1,6 +1,6 @@
-/**
- * JUnit tests for InitList
- * @author Josh Wright
+/** InitListTest.java
+ * Copyright (C) 2020 Josh Wright
+ * licensed under GPLv3
  */
 
 package inittracker;
@@ -8,6 +8,10 @@ package inittracker;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * JUnit tests for InitList
+ * @author Josh Wright
+ */
 public class InitListTest {
 
     @Test

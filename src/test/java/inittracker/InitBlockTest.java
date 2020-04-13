@@ -1,6 +1,6 @@
-/**
- * JUnit tests for InitBlock
- * @author Josh Wright
+/** InitBlockTest.java
+ * Copyright (C) 2020 Josh Wright
+ * licensed under GPLv3
  */
 
 package inittracker;
@@ -8,6 +8,10 @@ package inittracker;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+/**
+ * JUnit tests for InitBlock
+ * @author Josh Wright
+ */
 public class InitBlockTest {
 
     @Test

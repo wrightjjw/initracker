@@ -1,10 +1,13 @@
+/** InitBlock.java
+ * Copyright (C) 2020 Josh Wright
+ * licensed under GPLv3
+ */
+package inittracker;
+
 /**
  * Container for tracking name, initiative, and AC.
  * @author Josh Wright
  */
-
-package inittracker;
-
 public class InitBlock {
 
     protected String name;
