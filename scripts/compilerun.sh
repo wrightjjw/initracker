@@ -1,3 +1,4 @@
+#!/bin/sh
 # Compile and run the code
 mvn compile
 cd target/classes
