@@ -104,7 +104,11 @@ public final class App implements ActionListener {
             String name = nameBox.getText();
             int init = Integer.parseInt( initBox.getText() );
             int ac = Integer.parseInt ( acBox.getText() );
-            model.data.add(new InitBlock(name, init, ac));
+            try {
+                model.data.add(new InitBlock(name, init, ac));
+            } catch (EqualInitsException ee) {
+                //TODO: handle exception
+            }
             table.updateUI();
             //TODO: Implement error handling
             //TODO: clear text boxes
